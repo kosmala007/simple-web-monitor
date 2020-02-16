@@ -17,20 +17,16 @@ while test $# -gt 0; do
     case "$1" in
         -h|--help)
             echo "$PACKAGE"
-            echo "Usage: swm [arguments]"
+            echo "Usage: swm.sh [arguments]"
             echo " "
-            echo "arguments:"
+            echo "Arguments:"
             echo "-h    show help"
             echo "-d    domain for check"
             echo "-r    recipients (emails) of notifications (separated by comma, e.g. -r m1@example.com,m2@example.com)"
             echo " "
-            echo "requipments programs:"
-            echo "* curl"
-            echo "* numfmt"
-            echo "* cut"
-            echo "* tr"
-            echo "* sed"
-            echo "* wc"
+            echo "WARNING: before usage create .env file based on .env.dist (important - don't use quotation marks)"
+            echo "Required programs in OS: curl, numfmtm cut, tr, sed, wc"
+            echo " "
             exit 0
             ;;
         -d)
