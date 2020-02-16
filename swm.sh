@@ -2,7 +2,6 @@
 
 PACKAGE="Simple Web Monitor"
 
-message_subject="$PACKAGE - danger - $domain !!!"
 message_statements=''
 message_recipients=''
 risk=0
@@ -78,5 +77,15 @@ fi
 
 # send notify
 if [ "$risk" -eq "1" ] ; then
+    message_subject="$PACKAGE | threats found in: $domain !!!"
+    content=$'From: <'$mailer_user$'> \nTo: <'$message_recipients$'> \nContent-Type: text/plain;charset=utf-8 \nSubject: '$message_subject$'\n\n'
+    content+="$message_statements"
 
+    curl --connect-timeout 15 -v --insecure "smtp://$mailer_host:$mailer_port" \
+        -u "$mailer_user:$mailer_pass" \
+        --mail-from "$mailer_user" \
+        $(echo "${message_recipients}" | tr ', ' '\n' | xargs -r -n1 printf '--mail-rcpt %s ') \
+        -T - \
+        --ssl \
+        <<< "$content"
 fi
