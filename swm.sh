@@ -24,9 +24,13 @@ while test $# -gt 0; do
             echo "-d    domain for check"
             echo "-r    recipients (emails) of notifications (separated by comma, e.g. -r m1@example.com,m2@example.com)"
             echo " "
-            echo "requipments:"
+            echo "requipments programs:"
             echo "* curl"
             echo "* numfmt"
+            echo "* cut"
+            echo "* tr"
+            echo "* sed"
+            echo "* wc"
             exit 0
             ;;
         -d)
