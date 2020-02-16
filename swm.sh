@@ -42,6 +42,12 @@ while test $# -gt 0; do
     esac
 done
 
+# check required arguments
+if [ -z "$domain" ] || [ -z "$recipients" ]; then
+    echo "Error - missing arguments. See --help"
+    exit 0
+fi
+
 # check website http status
 httpResponse=$(curl --silent --write-out "HTTPSTATUS:%{http_code}" -X GET $domain)
 httpStatus=$(echo $httpResponse | tr -d '\n' | sed -E 's/.*HTTPSTATUS:([0-9]{3})$/\1/')
