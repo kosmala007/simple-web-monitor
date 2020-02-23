@@ -11,7 +11,7 @@ Program will send you an email.
 
 ## How it use
 
-1. Check help ``./swm.hs --help``
+1. Check help ``./swm.sh --help``
 1. Create ``.env`` file based on ``.env.dis`` with credentials form mailer
     * important - don't use quotation marks
 1. Run script manuallny eg. ``./swm.sh -d https://github.com/404 -r your@email.com``
